@@ -16,5 +16,5 @@ def bruteForce_decryptZip(zip_file, password_list):
 		except RuntimeError:
 			print(f"Senha não encontrada.")
 
-		
+#Example of application:		
 bruteForce_decryptZip("breakme.zip","attacklist.txt")
