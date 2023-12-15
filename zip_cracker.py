@@ -11,19 +11,27 @@ archies = sys.argv
 
 file_zip = archies[1]
 psswdlist = archies[2]
-if file_zip == 'man' and psswdlist == 'zip_cracker':
-	mssg = 'WELCOME TO ZIP CRACKER!/nHow to use:/nCommandline: ./zip_cracker [file.zip] [password_list.txt]/n'
-	print(mssg)
 
-if file_zip == 'disco' and psswdlist == '5':
+for i in range(5):
+    print("·", end="")
+    time.sleep(1)
+
+print('WELCOME TO ZIP CRACKER!\nHow to use:\nCommandline: "./zip_cracker.py [file.zip] [password_list.txt]"')
+
+def hailEris():
+    try:
         while 2 < 3:
-            print("HAIL ERIS!!!")
+            print("HAIL ERIS!!!!!")
             time.sleep(0.5)
-            
-if file_zip == 'wtf' and psswdlist == 'disco':
-        wb.open("https://www.principiadiscordia.com/downloads/Principia%20Discordia%20(Wholly%201st%20Edition).pdf", autoraise=True)    
-                
-            
+    except FileNotFoundError:
+        print("And this.")
+
+def wtfDisco():
+    try:
+        wb.open("https://www.principiadiscordia.com/downloads/Principia%20Discordia%20(Wholly%201st%20Edition).pdf", autoraise=True) 
+    except FileNotFoundError:
+        print("And this.")
+
 def crack_zip(zipFile, list_pass):
     
     df = np.loadtxt(list_pass, dtype="str")
@@ -35,6 +43,9 @@ def crack_zip(zipFile, list_pass):
                 print(f'SUCCESS! Password is:{pswd}')
                 time.sleep(0.1)
                 return
+        except FileNotFoundError:
+            print("And that!")
+            continue
         except BadZipfile:
             print("Sorry! File not found! :(")
             time.sleep(0.1)
@@ -44,9 +55,14 @@ def crack_zip(zipFile, list_pass):
             time.sleep(0.1)
             continue
         print("Sorry! Password not found!:(")
+        
     
     
-
-
-crack_zip(file_zip, psswdlist)
+if file_zip == 'disco' and psswdlist == '5':
+    hailEris()
+        
+elif file_zip == 'wtf' and psswdlist == 'disco':
+    wtfDisco()
+else:
+    crack_zip(file_zip, psswdlist)
 
